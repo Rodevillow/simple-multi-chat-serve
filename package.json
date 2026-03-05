@@ -1,0 +1,21 @@
+{
+  "name": "simple-multi-chat",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "app",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,api -c magenta,cyan \"npm run dev --workspace app\" \"npm run dev --workspace server\"",
+    "build": "npm run build --workspace app && npm run build --workspace server",
+    "test": "npm run test --workspace server",
+    "lint": "npm run typecheck --workspace app && npm run build --workspace server",
+    "prisma:generate": "npm run prisma:generate --workspace server",
+    "prisma:migrate": "npm run prisma:migrate --workspace server",
+    "prisma:push": "npm run prisma:push --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
