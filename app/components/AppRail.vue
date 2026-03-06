@@ -56,15 +56,22 @@ const signOut = async () => {
         <Button text rounded severity="secondary" icon="pi pi-cog" :class="{ active: isActive('/settings') }" />
       </NuxtLink>
       <Divider />
-      <div class="rail-user-avatar" aria-label="Current user avatar">
-        <img
-          v-if="userAvatar && !avatarImageBroken"
-          :src="userAvatar"
-          :alt="auth.state.value.user?.nickname ?? 'User avatar'"
-          @error="avatarImageBroken = true"
-        />
-        <span v-else>{{ userInitials }}</span>
-      </div>
+      <ClientOnly>
+        <div class="rail-user-avatar" aria-label="Current user avatar">
+          <img
+            v-if="userAvatar && !avatarImageBroken"
+            :src="userAvatar"
+            :alt="auth.state.value.user?.nickname ?? 'User avatar'"
+            @error="avatarImageBroken = true"
+          />
+          <span v-else>{{ userInitials }}</span>
+        </div>
+        <template #fallback>
+          <div class="rail-user-avatar" aria-label="Current user avatar">
+            <span>ME</span>
+          </div>
+        </template>
+      </ClientOnly>
     </div>
   </aside>
 </template>
