@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nuxt dev --port 3000",
+    "dev": "node api.js && nuxt dev --port 3000",
     "build": "nuxt build",
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck"
@@ -12,10 +12,11 @@
     "@primeuix/themes": "^2.0.3",
     "@vite-pwa/nuxt": "^1.1.0",
     "cropperjs": "^1.6.2",
+    "laravel-echo": "^2.3.0",
     "nuxt": "^4.0.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.4.1",
-    "socket.io-client": "^4.8.1"
+    "pusher-js": "^8.4.0"
   },
   "optionalDependencies": {
     "@oxc-minify/binding-darwin-arm64": "^0.112.0",
